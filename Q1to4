@@ -1,0 +1,109 @@
+import csv
+import os
+
+# Given information - All possible characters in each position of the ID
+pos1 = ['1','2','3','4','5','6','7','8','9']
+pos2 = ['A','C','D','E','F','G','H','J','K','M','N','P','Q','R','T','U','V','W','X','Y']
+pos3 = ['0','1','2','3','4','5','6','7','8','9','A','C','D','E','F','G','H','J','K','M','N','P','Q','R','T','U','V','W','X','Y']
+pos4 = ['0','1','2','3','4','5','6','7','8','9']
+pos5 = ['A','C','D','E','F','G','H','J','K','M','N','P','Q','R','T','U','V','W','X','Y']
+pos6 = ['0','1','2','3','4','5','6','7','8','9','A','C','D','E','F','G','H','J','K','M','N','P','Q','R','T','U','V','W','X','Y']
+pos7 = ['0','1','2','3','4','5','6','7','8','9']
+pos8 = ['A','C','D','E','F','G','H','J','K','M','N','P','Q','R','T','U','V','W','X','Y']
+pos9 = ['A','C','D','E','F','G','H','J','K','M','N','P','Q','R','T','U','V','W','X','Y']
+pos10 = ['0','1','2','3','4','5','6','7','8','9']
+pos11 = ['0','1','2','3','4','5','6','7','8','9']
+
+# Calculation of total number of ID combinations
+num_combinations = len(pos1)*len(pos2)*len(pos3)*len(pos4)*len(pos5)*len(pos6)*len(pos7)*len(pos8)*len(pos9)*len(pos10)*len(pos11)
+
+print('The number of options of characters at each position of the ID are given below:\n Position 1:\t' + str(len(pos1)) + '\n Position 2:\t' + str(len(pos2)) + '\n Position 3:\t' + str(len(pos3)) + '\n Position 4:\t' + str(len(pos4)) + '\n Position 5:\t' + str(len(pos5)) + '\n Position 6:\t' + str(len(pos6)) + '\n Position 7:\t' + str(len(pos7)) + '\n Position 8:\t' + str(len(pos8)) + '\n Position 9:\t' + str(len(pos9)) + '\n Position 10:\t' + str(len(pos10)) + '\n Position 11:\t' + str(len(pos11)))
+print('\nTherefore, the total amount of ID numbers is ' + str(num_combinations))
+
+ID_List = []
+count = 0
+
+#Finding first 1000000 ID numbers
+for ii in range(len(pos1)):
+  one = pos1[ii]
+
+  if(count >= 1000000):
+    break
+
+  for jj in range(len(pos2)):
+      two = pos2[jj]
+
+      if(count >= 1000000):
+        break
+
+      for kk in range(len(pos3)):
+        three = pos3[kk]
+
+        if(count >= 1000000):
+          break
+
+        for ll in range(len(pos4)):
+          four = pos4[ll]
+
+          if(count >= 1000000):
+            break
+
+          for mm in range(len(pos5)):
+            five = pos5[mm]
+
+            if(count >= 1000000):
+              break
+
+            for nn in range(len(pos6)):
+              six = pos6[nn]
+
+              if(count >= 1000000):
+                break
+
+              for oo in range(len(pos7)):
+                seven = pos7[oo]
+
+                if(count >= 1000000):
+                  break
+
+                for pp in range(len(pos8)):
+                  eight = pos8[pp]
+
+                  if(count >= 1000000):
+                    break
+
+                  for qq in range(len(pos9)):
+                    nine = pos9[qq]
+
+                    if(count >= 1000000):
+                      break
+
+                    for rr in range(len(pos10)):
+                      ten = pos10[rr]
+
+                      if(count >= 1000000):
+                        break
+
+                      for ss in range(len(pos11)):
+                        eleven = pos11[ss]
+
+                        id = [one, two, three, four, five, six, seven, eight, nine, ten, eleven]
+                        ID = ''.join(id)
+                        ID_List.append(ID)
+
+                        count += 1
+                        if(count >= 1000000):
+                          break
+
+print('Number of IDs generated:' + str(len(ID_List)))
+
+#Saving the list of IDs to a csv file
+ID_File = open('output.csv','w')
+
+for r in ID_List:
+    ID_File.write(r + '\n')
+
+ID_File.close()
+
+#Save as Excel file
+os.rename('output.csv','output.xlsx')
